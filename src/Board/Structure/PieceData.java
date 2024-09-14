@@ -23,6 +23,17 @@ public class PieceData {
     public static char getChar(int index, PieceColor[] colors, PieceType[] types) {
         return getChar(getPieceData(index, colors, types));
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        PieceData pieceData = (PieceData) obj;
+        return color == pieceData.color && type == pieceData.type;
+    }
 
 
 
