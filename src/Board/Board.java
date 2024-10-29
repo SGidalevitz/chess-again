@@ -53,6 +53,14 @@ public class Board {
     public static int getFile(int index) {
         return index % NUM_ROWS;
     }
+    public ArrayList<Integer> getPieces(PieceData data) {
+        if (data.type == PieceType.KING) {
+            return data.color == PieceColor.WHITE ? new ArrayList<>(whiteKingLocation) : new ArrayList<>(blackKingLocation);
+        }
+        return IntStream.range(0, NUM_SQUARES)
+                .filter(i -> types[i] == data.type && colors[i] == data.color)
+                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+    }
     }
     public static void printBoard(Board board) {
         for (int rank = NUM_ROWS - 1; rank >= 0; rank--) {
