@@ -61,6 +61,14 @@ public class Board {
                 .filter(i -> types[i] == data.type && colors[i] == data.color)
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
     }
+    private void applyMove(Move move) {
+        int start = move.origin();
+        int end = move.destination();
+        types[end] = types[start];
+        colors[end] = colors[start];
+        types[start] = PieceType.EMPTY;
+        colors[start] = PieceColor.EMPTY;
+    }
     }
     public static void printBoard(Board board) {
         for (int rank = NUM_ROWS - 1; rank >= 0; rank--) {
