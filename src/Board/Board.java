@@ -2,6 +2,12 @@ package Board;
 
 import Board.Creation.*;
 import Board.Structure.*;
+import MoveGeneration.Move;
+import MoveGeneration.MoveData;
+import MoveGeneration.MoveType;
+
+import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class Board {
     public static final int NUM_ROWS = 8;
