@@ -61,6 +61,9 @@ public class Board {
                 .filter(i -> types[i] == data.type && colors[i] == data.color)
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
     }
+    public ArrayList<Integer> getPieces(PieceColor color, PieceType type) {
+        return getPieces(new PieceData(color, type));
+    }
     private void applyMove(Move move) {
         int start = move.origin();
         int end = move.destination();
@@ -69,7 +72,10 @@ public class Board {
         types[start] = PieceType.EMPTY;
         colors[start] = PieceColor.EMPTY;
     }
+    private void unmakeMove() {
+
     }
+
     public static void printBoard(Board board) {
         for (int rank = NUM_ROWS - 1; rank >= 0; rank--) {
             for (int file = 0; file < NUM_ROWS; file++) {
