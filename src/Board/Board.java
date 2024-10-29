@@ -46,6 +46,8 @@ public class Board {
 
     public static int getIndex(int rank, int file) {
         return rank * 8 + file;
+        return rank * NUM_ROWS + file;
+    }
     }
     public static void printBoard(Board board) {
         for (int rank = NUM_ROWS - 1; rank >= 0; rank--) {
