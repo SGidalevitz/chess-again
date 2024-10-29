@@ -20,6 +20,10 @@ public class Board {
     public int enPassantTargetSquare;
     public int halfmoveClock;
     public int fullmoveNumber;
+    private int whiteKingLocation;
+    private int blackKingLocation;
+    public boolean latestMoveIsPresent;
+    public MoveData latestMove;
 
     // Only to be used by Board.BoardCreation.FenParser
     public Board() {}
