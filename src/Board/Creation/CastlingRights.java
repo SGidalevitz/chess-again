@@ -1,5 +1,7 @@
 package Board.Creation;
 
+import Board.Structure.PieceColor;
+
 public class CastlingRights {
     public boolean whiteKingside, blackKingside, whiteQueenside, blackQueenside;
 
@@ -15,6 +17,18 @@ public class CastlingRights {
           this.whiteQueenside = color.contains("k");
           this.blackQueenside = color.contains("q");
 
+    }
+    public void removeRights(PieceColor color) {
+        switch (color) {
+            case WHITE -> {
+                whiteKingside = false;
+                whiteQueenside = false;
+            }
+            case BLACK -> {
+                blackKingside = false;
+                blackQueenside = false;
+            }
+        }
     }
     public String toString() {
         return (whiteKingside ? "K" : "")
