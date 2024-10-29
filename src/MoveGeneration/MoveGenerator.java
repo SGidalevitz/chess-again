@@ -1,6 +1,6 @@
 package MoveGeneration;
 import Board.*;
-import Board.Structure.*;
+import Structure.*;
 
 import java.util.ArrayList;
 

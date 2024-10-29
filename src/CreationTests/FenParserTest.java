@@ -1,4 +1,4 @@
-package Board.CreationTests;
+package CreationTests;
 
 public class FenParserTest {
 }

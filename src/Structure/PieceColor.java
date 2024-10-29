@@ -1,4 +1,4 @@
-package Board.Structure;
+package Structure;
 public enum PieceColor {
     EMPTY, WHITE, BLACK;
 

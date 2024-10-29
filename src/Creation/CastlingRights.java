@@ -1,6 +1,6 @@
-package Board.Creation;
+package Creation;
 
-import Board.Structure.PieceColor;
+import Structure.PieceColor;
 
 public class CastlingRights {
     public boolean whiteKingside, blackKingside, whiteQueenside, blackQueenside;

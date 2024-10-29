@@ -1,12 +1,11 @@
 package Board;
 
-import Board.Creation.*;
-import Board.Structure.*;
-import MoveGeneration.Move;
+import Creation.*;
+import Structure.*;
 import MoveGeneration.MoveData;
-import MoveGeneration.MoveType;
 
 import java.util.ArrayList;
+import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class Board {
@@ -15,15 +14,17 @@ public class Board {
     public PieceType[] types;
     public PieceColor[] colors;
     public PieceColor activeColor;
-    public CastlingRights castlingRights;
-    public boolean targetSquareIsPresent;
-    public int enPassantTargetSquare;
-    public int halfmoveClock;
-    public int fullmoveNumber;
-    private int whiteKingLocation;
-    private int blackKingLocation;
+    CastlingRights castlingRights;
+    boolean targetSquareIsPresent;
+    int enPassantTargetSquare;
+    int halfmoveClock;
+    int fullmoveNumber;
+    int whiteKingLocation;
+    int blackKingLocation;
     public boolean latestMoveIsPresent;
     public MoveData latestMove;
+    Stack<MoveData> moveHistory;
+    PieceData lastCapture;
 
     // Only to be used by Board.BoardCreation.FenParser
     public Board() {}
@@ -53,6 +54,16 @@ public class Board {
     public static int getFile(int index) {
         return index % NUM_ROWS;
     }
+    public PieceData getPiece(int index) {
+        return new PieceData(colors[index], types[index]);
+    }
+    public void setPiece(int index, PieceData data) {
+        setPiece(index, data.type, data.color);
+    }
+    public void setPiece(int index, PieceType type, PieceColor color) {
+        types[index] = type;
+        colors[index] = color;
+    }
     public ArrayList<Integer> getPieces(PieceData data) {
         if (data.type == PieceType.KING) {
             return data.color == PieceColor.WHITE ? new ArrayList<>(whiteKingLocation) : new ArrayList<>(blackKingLocation);
@@ -64,17 +75,14 @@ public class Board {
     public ArrayList<Integer> getPieces(PieceColor color, PieceType type) {
         return getPieces(new PieceData(color, type));
     }
-    private void applyMove(Move move) {
-        int start = move.origin();
-        int end = move.destination();
-        types[end] = types[start];
-        colors[end] = colors[start];
-        types[start] = PieceType.EMPTY;
-        colors[start] = PieceColor.EMPTY;
+    boolean positionIsValid() {
+        return true;
     }
-    private void unmakeMove() {
+    private void makeMove(MoveData moveData) {
+        MoveMaker.makeMove(this, moveData);
+    }
 
-    }
+
 
     public static void printBoard(Board board) {
         for (int rank = NUM_ROWS - 1; rank >= 0; rank--) {
@@ -90,16 +98,3 @@ public class Board {
         }
     }
 }
-
-    /* TODO: Board.Board construction
-      * From FEN
-       * Board.Board
-       * Active color
-       * Castling rights
-       * En passant target square
-       * Halfmove clock
-       * Fullmove number
-      * From existing types and colors array
-      * From existing types and colors array as well as other standard data
-      * From other Board.Board class
-     */

@@ -1,12 +1,10 @@
 package MoveGeneration;
 import Board.Board;
-import Board.Structure.*;
+import Structure.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class BoardRenderer extends JPanel implements MouseListener {
     public BoardRenderer(Board board) {

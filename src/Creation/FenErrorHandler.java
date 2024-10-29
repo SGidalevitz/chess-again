@@ -1,4 +1,4 @@
-package Board.Creation;
+package Creation;
 
 public class FenErrorHandler {
 }

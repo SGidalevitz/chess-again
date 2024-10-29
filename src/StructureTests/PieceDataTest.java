@@ -1,6 +1,6 @@
-package Board.StructureTests;
+package StructureTests;
 
-import Board.Structure.*;
+import Structure.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 public class PieceDataTest {

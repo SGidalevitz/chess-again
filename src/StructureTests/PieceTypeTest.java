@@ -1,4 +1,4 @@
-package Board.StructureTests;
+package StructureTests;
 
 public class PieceTypeTest {
 }

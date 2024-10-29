@@ -1,7 +1,7 @@
-package Board.Creation;
+package Creation;
 
 import Board.*;
-import Board.Structure.*;
+import Structure.*;
 public final class FenParser {
     public static Board parseFen(String fen) {
         Board board = new Board();
